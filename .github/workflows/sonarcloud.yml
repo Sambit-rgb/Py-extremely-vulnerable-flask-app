@@ -53,6 +53,9 @@ jobs:
             cat > coverage.xml << 'EOF'
           <?xml version="1.0" ?>
           <coverage version="5.5" timestamp="0" lines-valid="0" lines-covered="0" line-rate="0" branches-covered="0" branch-rate="0" complexity="0">
+            <sources>
+              <source>.</source>
+            </sources>
           </coverage>
           EOF
           fi
@@ -66,4 +69,6 @@ jobs:
           args: >
             -Dsonar.projectKey=Sambit-rgb_Py-extremely-vulnerable-flask-app
             -Dsonar.organization=sambit-rgb
+            -Dsonar.python.version=3.11
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=.
