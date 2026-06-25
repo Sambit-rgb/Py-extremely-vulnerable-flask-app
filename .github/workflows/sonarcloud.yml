@@ -52,6 +52,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.projectKey=Sambit-rgb_Py-extremely-vulnerable-flask-app
             -Dsonar.organization=sambit-rgb
             -Dsonar.python.coverage.reportPaths=coverage.xml
