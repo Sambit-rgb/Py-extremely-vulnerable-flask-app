@@ -47,9 +47,13 @@ jobs:
             --cov-report=term \
             || echo "No tests found, continuing with analysis"
 
-      - name: Create dummy coverage if needed
+      - name: Fix coverage report paths
         run: |
-          if [ ! -f coverage.xml ]; then
+          if [ -f coverage.xml ]; then
+            # Replace absolute paths with relative paths in coverage.xml
+            sed -i "s|/home/runner/work/Py-extremely-vulnerable-flask-app/Py-extremely-vulnerable-flask-app|.|g" coverage.xml
+          else
+            # Create dummy coverage if no tests found
             cat > coverage.xml << 'EOF'
           <?xml version="1.0" ?>
           <coverage version="5.5" timestamp="0" lines-valid="0" lines-covered="0" line-rate="0" branches-covered="0" branch-rate="0" complexity="0">
